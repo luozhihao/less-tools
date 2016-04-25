@@ -1,0 +1,27 @@
+@import "mixins";
+@import "variables";
+// VI主色
+@vic:#FF7300; 
+@vic2:#e64b16;
+@gray:#f6f6f6;
+@Yahei:Microsoft YaHei;
+
+.border-radius(@tl;@tr;@br;@bl){-webkit-border-radius:@tl @tr @br @bl;-moz-border-radius:@tl @tr @br @bl;border-radius:@tl @tr @br @bl;}
+.transition(@css;@t;@type){-webkit-transition:@css @t @type;-moz-transition:@css @t @type ;-ms-transition:@css @t @type ;-o-transition:@css @t @type ;transition:@css @t @type ;}
+.box-shadow(@x;@y;@blur;@spread;@color){-webkit-box-shadow:@x @y @blur @spread @color ;-moz-box-shadow:@x @y @blur @spread @color ;box-shadow:@x @y @blur @spread @color ;}
+.opacity(@val) {filter:alpha(opacity=@val);-moz-opacity:@val/100;-webkit-opacity: @val/100;opacity: @val/100;} //0-100
+.transform(@n){-webkit-transform:scale(@n);-moz-transform:scale(@n);transform:scale(@n);}
+.inline-block(){display:inline-block;*display:inline;*zoom:1;}
+
+.triangle-b(@w;@c){border:@w solid @c;border-color:@c transparent transparent transparent;overflow:hidden;*width:0;*height:0}
+.triangle-l(@w;@c){border:@w solid @c;border-color:transparent @c transparent transparent;overflow:hidden;*width:0;*height:0}
+.triangle-t(@w;@c){border:@w solid @c;border-color:transparent @c transparent transparent;overflow:hidden;*width:0;*height:0}
+.triangle-r(@w;@c){border:@w solid @c;border-color:transparent transparent transparent @c;overflow:hidden;*width:0;*height:0}
+.rgba(@r;@g;@b;@a){
+    @alphaColor: rgba(@r,@g,@b,@a);
+    filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d')", argb(@alphaColor), argb(@alphaColor)));
+    background: @alphaColor;
+    @media all and (min-width:0px) { filter: none;}
+}
+.fixed(@l;@t){position:fixed;left:@l;top:@t;_margin-top:@t;_position:absolute;_top:e(%("expression(documentElement.scrollTop)"))}
+.fixed_b(@l;@b){position:fixed;left:@l;bottom:@b;_margin-bottom:@b;_position:absolute;_bottom:auto;_top:e(%("expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))"))}
